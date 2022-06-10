@@ -41,7 +41,7 @@ jobs:
           dockerfile: .devcontainer/Containerfile.alpine
 
   run-lint-debian:
-    name: Hadolint Action .alpine
+    name: Hadolint Action .debian
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
