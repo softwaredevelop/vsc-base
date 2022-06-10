@@ -1,8 +1,6 @@
 {
 	"name": "base",
 	"build": {
-		// "dockerfile": "Containerfile.debian",
-		// "dockerfile": "Containerfile.ubuntu",
 		"dockerfile": "Dockerfile",
 		"args": {
 			"USER_UID": "1000",
