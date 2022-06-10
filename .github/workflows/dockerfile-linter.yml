@@ -1,18 +1,16 @@
 ---
-name: Containerfile Linter
+name: Dockerfile Linter
 
 on:
   push:
     branches:
       - "main"
     paths:
-      - ".devcontainer/Containerfile.*"
       - ".devcontainer/Dockerfile"
   pull_request:
     branches:
       - "main"
     paths:
-      - ".devcontainer/Containerfile.*"
       - ".devcontainer/Dockerfile"
 
 concurrency:
@@ -55,7 +53,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Scan config Containerfiles for vulnerabilities
+      - name: Scan config Dockerfiles for vulnerabilities
         run: |
           trivy config \
           --severity CRITICAL,HIGH \
