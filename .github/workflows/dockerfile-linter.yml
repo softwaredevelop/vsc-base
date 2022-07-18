@@ -40,21 +40,20 @@ jobs:
         with:
           dockerfile: .devcontainer/Dockerfile
 
-  scan:
-    name: Scan config files for vulnerabilities
+  trivy-scan:
+    name: Trivy
     runs-on: ubuntu-latest
-    container:
-      image: docker.io/aquasec/trivy:latest
-      volumes:
-        - "${{ github.workspace }}:/volume"
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: Scan config Dockerfiles for vulnerabilities
-        run: |
-          trivy config \
-          --severity CRITICAL,HIGH \
-          /volume
+      - name: Trivy vulnerability scanner in IaC mode
+        uses: aquasecurity/trivy-action@master
+        with:
+          format: "table"
+          ignore-unfixed: true
+          scan-type: "config"
+          severity: "CRITICAL,HIGH"
+          trivyignores: "/.trivyignore"
