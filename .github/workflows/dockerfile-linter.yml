@@ -56,4 +56,5 @@ jobs:
           ignore-unfixed: true
           scan-type: "config"
           severity: "CRITICAL,HIGH"
-          trivyignores: "/.trivyignore"
+          skip-files: ".devcontainer/Containerfile.*"
+          trivyignores: ".trivyignore"
